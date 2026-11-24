@@ -9,10 +9,6 @@ int main()
     setlocale(LC_NUMERIC, "C");
 
     FILE *in = fopen("test2.txt", "r");
-    if (in == NULL) {
-        printf("Ошибка открытия входного файла!\n");
-        return 1;
-    }
 
     int n, m;
     do {
@@ -35,22 +31,14 @@ int main()
     Create(&A, n, m);
     Vvod(in, A, n, m);
 
-    int i = 0;
-    int fl = 1;
-    while (i < n && fl) {
-        if (est_otr(A[i], m) == 1) {
-            fl = 0;
-        } else {
-            i += 1;
-        }
-    }
+    int idx = poisk_str(A, n, m);
 
     FILE *out = fopen("output.txt", "w");
     Vivod(out, A, n, m);
 
-    if (fl == 0) {
+    if (idx < n) {
         fprintf(out, "В массиве есть строка, содержащая отрицательный элемент.\n");
-        fprintf(out, "Номер строки: %i (индекс в массиве: %i)\n", i + 1, i);
+        fprintf(out, "Номер строки: %i (индекс в массиве: %i)\n", idx + 1, idx);
     } else {
         fprintf(out, "В массиве нет строк, содержащих отрицательный элемент.\n");
     }

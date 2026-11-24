@@ -41,11 +41,20 @@ int est_otr(int *str, int m) {
             j += 1;
         }
     }
-    if (fl == 0) {
-        return 1;
-    } else {
-        return 0;
+    return !fl;
+}
+
+int poisk_str(int **x, int n, int m) {
+    int i = 0;
+    int fl = 1;
+    while (i < n && fl) {
+        if (est_otr(x[i], m) == 1) {
+            fl = 0;
+        } else {
+            i += 1;
+        }
     }
+    return i;
 }
 
 void Ochistka(int ***x, int n) {

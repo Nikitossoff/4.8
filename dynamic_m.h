@@ -7,6 +7,7 @@ void Create(int ***x, int n, int m);
 void Vvod(FILE *in, int **x, int n, int m);
 void Vivod(FILE *out, int **x, int n, int m);
 int est_otr(int *str, int m);
+int poisk_str(int **x, int n, int m);
 void Ochistka(int ***x, int n);
 
 #endif
