@@ -1,5 +1,6 @@
 #include "dynamic_m.h"
 #include <malloc.h>
+#include <stdbool.h>
 
 void Create(int ***x, int n, int m) {
     *x = (int **)malloc(n * sizeof(int *));
@@ -31,28 +32,24 @@ void Vivod(FILE *out, int **x, int n, int m) {
     return;
 }
 
-int est_otr(int *str, int m) {
-    int j = 0;
-    int fl = 1;
-    while (j < m && fl) {
-        if (str[j] < 0) {
-            fl = 0;
-        } else {
-            j += 1;
+int poisk_str(int **x, int n, int m) {
+    bool fl = true;
+    int i = 0;
+    while (i < n && fl) {
+        int j = 0;
+        while (j < m && fl) {
+            if (x[i][j] < 0) {
+                fl = false;
+            } else {
+                j++;
+            }
+        }
+        if (fl) {
+            i++;
         }
     }
-    return !fl;
-}
-
-int poisk_str(int **x, int n, int m) {
-    int i = 0;
-    int fl = 1;
-    while (i < n && fl) {
-        if (est_otr(x[i], m) == 1) {
-            fl = 0;
-        } else {
-            i += 1;
-        }
+    if (fl) {
+        i = -1;
     }
     return i;
 }

@@ -36,7 +36,7 @@ int main()
     FILE *out = fopen("output.txt", "w");
     Vivod(out, A, n, m);
 
-    if (idx < n) {
+    if (idx != -1) {
         fprintf(out, "В массиве есть строка, содержащая отрицательный элемент.\n");
         fprintf(out, "Номер строки: %i (индекс в массиве: %i)\n", idx + 1, idx);
     } else {
