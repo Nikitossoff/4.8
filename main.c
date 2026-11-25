@@ -27,7 +27,7 @@ int main()
         }
     } while (m <= 1 || m > 100);
 
-    int **A = NULL;
+    int **A;
     Create(&A, n, m);
     Vvod(in, A, n, m);
 
